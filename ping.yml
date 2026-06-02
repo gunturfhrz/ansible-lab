@@ -1,8 +1,6 @@
-# ping.yml
 ---
 - hosts: all
-  gather_facts: false
 
   tasks:
-    - name: Ping test
-      ping:
+    - name: Show hostname
+      command: hostname
