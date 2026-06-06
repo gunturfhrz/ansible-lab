@@ -3,7 +3,17 @@
   gather_facts: false
 
   tasks:
+
+    - name: Create namespace
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: awx-lab
+
     - name: Deploy nginx
       kubernetes.core.k8s:
         state: present
-        src: files/nginx-deployment.yaml
+        src: manifests/nginx-deployment.yml
