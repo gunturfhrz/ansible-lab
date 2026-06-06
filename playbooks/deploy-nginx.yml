@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Deploy nginx
+      kubernetes.core.k8s:
+        state: present
+        src: files/nginx-deployment.yaml
