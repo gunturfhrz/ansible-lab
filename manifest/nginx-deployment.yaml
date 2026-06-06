@@ -1,17 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx-awx
+  namespace: awx-lab
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-awx
+
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-awx
+
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: nginx:latest
