@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Check kubectl
+      command: kubectl get nodes
+      register: result
+
+    - debug:
+        var: result.stdout_lines
