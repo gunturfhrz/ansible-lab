@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Show Python version
+      command: python3 --version
+      register: py
+
+    - debug:
+        var: py.stdout
+
+    - name: Show Kubernetes collection
+      command: ansible-galaxy collection list kubernetes.core
+      register: k8s
+
+    - debug:
+        var: k8s.stdout_lines
