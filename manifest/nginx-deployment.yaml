@@ -1,22 +1,28 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-awx
-  namespace: awx-lab
+---
+- hosts: localhost
+  gather_facts: false
 
-spec:
-  replicas: 1
+  tasks:
 
-  selector:
-    matchLabels:
-      app: nginx-awx
-
-  template:
-    metadata:
-      labels:
-        app: nginx-awx
-
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
+    - name: Deploy nginx
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: nginx-awx
+            namespace: awx-lab
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: nginx-awx
+            template:
+              metadata:
+                labels:
+                  app: nginx-awx
+              spec:
+                containers:
+                  - name: nginx
+                    image: nginx:latest
