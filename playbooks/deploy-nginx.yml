@@ -6,9 +6,9 @@
     - name: Apply deployment
       kubernetes.core.k8s:
         state: present
-        src: manifests/deployment.yaml
+        src: manifests/nginx-deployment.yaml
 
     - name: Apply service
       kubernetes.core.k8s:
         state: present
-        src: manifests/service.yaml
+        src: manifests/nginx-service.yaml
