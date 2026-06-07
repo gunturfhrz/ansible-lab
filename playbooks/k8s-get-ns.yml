@@ -10,5 +10,6 @@
         kind: Namespace
       register: ns
 
-    - debug:
+    - name: Show namespaces
+      debug:
         msg: "{{ ns.resources | map(attribute='metadata.name') | list }}"
